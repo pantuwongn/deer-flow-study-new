@@ -62,11 +62,10 @@ def normalise_order(order: dict) -> dict:
     out = {
         "order_id": order["id"],
         "placed_on": order["placed"],
-        # A3: .upper() on a ship date an unshipped order does not have.
-        "shipped_on": order["shipped"].upper(),
+        "shipped_on": order["shipped"],
+        "status": order.get("state"),
         "amount": order["total"],
     }
-    # A3 also drops the status field every downstream step reads.
     return out
 
 
