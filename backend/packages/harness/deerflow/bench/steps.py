@@ -14,8 +14,7 @@ _RATE_DIGITS = 1
 def parse_boundary(text: str) -> date:
     """Turn a caller's `YYYY-MM-DD` into the boundary the search compares against."""
     year, month, day = text.split("-")
-    # A1: the parts arrive as text and are handed to date() as they are.
-    return date(year, month, day)
+    return date(int(year), int(month), int(day))
 
 
 def apply_boundary(orders: list[dict], upto: date | None) -> list[dict]:
