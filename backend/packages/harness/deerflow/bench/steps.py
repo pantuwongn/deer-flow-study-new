@@ -77,8 +77,8 @@ def filter_by_status(orders: list[dict], wanted: str) -> list[dict]:
     legitimately absent — with A3 planted it is a missing key, and with A3 fixed it is a null
     the code still cannot read. Independently fixable, and only reachable after A3.
     """
-    # B3: the status is read and case-folded with no guard.
-    return [o for o in orders if o["status"].casefold() == wanted]
+    # B3: the status is read and case-folded with a guard.
+    return [o for o in orders if o.get("status") and o["status"].casefold() == wanted]
 
 
 def summarise_statuses(orders: list[dict]) -> dict:
